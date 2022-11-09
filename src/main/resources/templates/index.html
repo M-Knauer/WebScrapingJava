@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Vagas</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" 
+	rel="stylesheet" 
+	th:crossorigin="anonymous">
+<link href="/style.css" rel="stylesheet">
+</head>
+<body>
+
+	<form action="/" method="post" id="search-banner__form" role="search" class="search-banner__form row g-3">
+		<div class="col-6">
+			<input id="nova-home-search" class="search-banner__input" 
+			placeholder="Digite um cargo, cidade ou estado" 
+			aria-label="Digite um cargo, cidade ou estado" 
+			data-testid="input-text_search-desktop" name="queryString">
+		</div>
+		<div>
+			<input type="submit" value="Buscar" class="btn btn-success">
+		</div>
+	</form>
+	<div class="container my-2">
+		<h2 th:text="${nomeBusca}"></h2>
+		<table border="1" class="table">
+  			<thead class="table-dark">
+				<tr>
+					<th>Titulo</th>
+					<th>Empresa</th>
+					<th>Nivel</th>
+					<th>Detalhes</th>
+					<th>Local</th>
+					<th>Data</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="vaga : ${vagas}">
+					<td><a th:href="${vaga.link}" th:text="${vaga.titulo}" target="_blank"></a></td>
+					<td th:text="${vaga.empresa}"></td>
+					<td th:text="${vaga.nivel}"></td>
+					<td th:text="${vaga.detalhes}"></td>
+					<td th:text="${vaga.local}"></td>
+					<td th:text="${vaga.data}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" 
+	th:crossorigin="anonymous"></script>
+</html>
